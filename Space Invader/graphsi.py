@@ -13,7 +13,7 @@ from tkinter import BOTTOM, Canvas, LEFT
 Fenetre= Tk()
 Fenetre.title('Space Invaders')
 Fenetre.configure(bg='black')
-Title = Label(Fenetre, text = " Space Invaders",relief ='raised', fg = "blue", font = ("Courier", 30))
+Title = Label(Fenetre, text = "Space Invaders",relief ='raised', fg = "blue", font = ("Courier", 30))
 Title.pack()
 BouttonQuitt = Button(Fenetre, text = " QUITER LA PARTIE", fg = "red",relief = 'groove', command =Fenetre.destroy )
 BouttonQuitt.pack(side = BOTTOM, padx = 30, pady = 70)
@@ -28,3 +28,12 @@ monCanvas.place(x=600,y=390)
 
 Canevas.pack()
 Fenetre.mainloop()
+
+
+
+
+
+
+
+
+
