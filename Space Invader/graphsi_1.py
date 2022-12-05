@@ -88,9 +88,28 @@ deplacement()
 
 #INIT
 PosX = Largeur / 2
-PosY = Hauteur / 2
+PosY = Hauteur - 50
 
-Vaisseau = Canevas.create_rectangle()
+Vaisseau = Canevas.create_rectangle(PosX - 10, PosY - 10, PosX + 10, PosY + 10, width = 5, outline = 'white', fill = 'grey')
+
+#fonction pour faire bouger le vaisseau avec le clavier
+def Clavier (event):
+    """
+    permet de déplacer le vaisseau à gauche ou à droite à l'aide des touches du clavier
+    """
+    global PosX, PosY
+    touche = event.keysym
+    print (touche)
+    #deplacement vers la droite
+    if touche == 'm' : 
+        PosX = PosX + 20
+    #deplacement vers la gauche
+    elif touche == 'l' : 
+        PosX = PosX - 20
+    Canevas.coords(Vaisseau,PosX - 10, PosY - 10, PosX + 10, PosY + 10)
+
+Canevas.focus_set()
+Canevas.bind('<Key>', Clavier)
 
 Canevas.pack()
 Fenetre.mainloop()
