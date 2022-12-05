@@ -51,7 +51,8 @@ menubar.add_cascade(label='Test 1', menu = menufichier)
 #menubar.add_cascade(label='Test 2', fg = 'white', menu = menufichier)
 Fenetre.config(menu = menubar)
 
-#création d'un oval
+#création d'un oval (alien)
+
 #INITIALISATIONS
 RAYON = 15
 X = Largeur / 2
@@ -62,7 +63,7 @@ vitesse = random.uniform(5,10)
 DX = vitesse 
 DY = 0
 
-forme = Canevas.create_oval(X-RAYON, Y-RAYON, X+RAYON, Y+RAYON, width = 1, outline = 'red', fill = 'red')
+alien = Canevas.create_oval(X-RAYON, Y-RAYON, X+RAYON, Y+RAYON, width = 1, outline = 'red', fill = 'red')
 
 #creation fonction qui sera dans un autre fichier surement
 def deplacement():
@@ -78,10 +79,37 @@ def deplacement():
     X = X + DX
     Y = Y + DY
 
-    Canevas.coords(forme, X-RAYON, Y-RAYON, X+RAYON, Y+RAYON)
+    Canevas.coords(alien, X-RAYON, Y-RAYON, X+RAYON, Y+RAYON)
     Fenetre.after(20,deplacement)
 
 deplacement()
+
+#creation d'un rectangle (vaisseau)
+
+#INIT
+PosX = Largeur / 2
+PosY = Hauteur - 50
+
+Vaisseau = Canevas.create_rectangle(PosX - 10, PosY - 10, PosX + 10, PosY + 10, width = 5, outline = 'white', fill = 'grey')
+
+#fonction pour faire bouger le vaisseau avec le clavier
+def Clavier (event):
+    """
+    permet de déplacer le vaisseau à gauche ou à droite à l'aide des touches du clavier
+    """
+    global PosX, PosY
+    touche = event.keysym
+    print (touche)
+    #deplacement vers la droite
+    if touche == 'm' : 
+        PosX = PosX + 20
+    #deplacement vers la gauche
+    elif touche == 'l' : 
+        PosX = PosX - 20
+    Canevas.coords(Vaisseau,PosX - 10, PosY - 10, PosX + 10, PosY + 10)
+
+Canevas.focus_set()
+Canevas.bind('<Key>', Clavier)
 
 Canevas.pack()
 Fenetre.mainloop()
