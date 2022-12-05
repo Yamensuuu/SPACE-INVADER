@@ -1,3 +1,8 @@
+"""" Auteur : BEN GUIRAT; FABIAN
+     Début projet : 05/12/22
+     Projet : SPACE INVADER        
+"""
+
 from tkinter import Tk, Label, Button
 from tkinter import *
 
