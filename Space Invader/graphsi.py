@@ -1,4 +1,4 @@
-"""" Auteur : BEN GUIRAT; FABIAN
+""" Auteur : BEN GUIRAT; FABIAN
      Début projet : 05/12/22
      Projet : SPACE INVADER        
 """
@@ -27,7 +27,8 @@ monCanvas = Canvas(Fenetre, width=70, height=70, bg='ivory', borderwidth=0, high
 monCanvas.place(x=600,y=390)
 
 Canevas.pack()
-Fenetre.mainloop()
+Fenetre.mainloop() 
+
 
 
 
