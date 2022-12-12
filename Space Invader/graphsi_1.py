@@ -90,23 +90,66 @@ deplacement()
 PosX = Largeur / 2
 PosY = Hauteur - 50
 
-Vaisseau = Canevas.create_rectangle(PosX - 10, PosY - 10, PosX + 10, PosY + 10, width = 5, outline = 'white', fill = 'grey')
+Vaisseau = Canevas.create_rectangle(PosX - 10, PosY - 10, PosX + 10, PosY + 10, width = 2, outline = 'white', fill = 'grey')
 
 #fonction pour faire bouger le vaisseau avec le clavier
+
 def Clavier (event):
     """
     permet de déplacer le vaisseau à gauche ou à droite à l'aide des touches du clavier
     """
     global PosX, PosY
     touche = event.keysym
-    print (touche)
+    #print (touche)
     #deplacement vers la droite
     if touche == 'm' : 
         PosX = PosX + 20
+        Canevas.coords(Vaisseau,PosX - 10, PosY - 10, PosX + 10, PosY + 10)
+
     #deplacement vers la gauche
     elif touche == 'l' : 
         PosX = PosX - 20
-    Canevas.coords(Vaisseau,PosX - 10, PosY - 10, PosX + 10, PosY + 10)
+        Canevas.coords(Vaisseau,PosX - 10, PosY - 10, PosX + 10, PosY + 10)
+
+    elif touche == "space":
+        shoot(event)
+#tir du projectile
+
+#x_depart_proj = 0
+#y_depart_proj = 0
+vitesse_projectile = random.uniform(1,2)
+
+Dy_proj = vitesse_projectile
+Dx_proj = 0
+
+def deplacement_projectile(item):
+    """
+    lance le projectile vers l'ennemi
+    """
+    x , y , x1 , y1 = Canevas.coords(item)
+    y_proj = abs(y + y1) // 2
+    x_proj = abs(x + x1) // 2
+    x_proj = x_proj + Dx_proj
+    y_proj = y_proj + Dy_proj
+    Canevas.coords(item, x, y, x1, y1)
+    Fenetre.after(20,deplacement_projectile)
+
+
+def shoot(event):
+    """
+    tire un projectile vers le haut à partir de son point de depart
+    """
+    touche = event.keysym
+    #print (touche)
+    global Hauteur, Dy_proj, Dx_proj
+    x_dep_proj , y_dep_proj , x1_dep_proj , y1_dep_proj = Canevas.coords(Vaisseau) 
+    #x_depart_proj = abs(x_dep_proj + x1_dep_proj) // 2
+    #y_depart_proj = abs(y_dep_proj + y1_dep_proj) // 2
+    #if touche == 'space' : 
+    projectile = Canevas.create_rectangle(x_dep_proj, y_dep_proj, x1_dep_proj, y1_dep_proj, outline = 'white', fill = 'blue')
+    Canevas.coords(projectile, x_dep_proj, y_dep_proj, x1_dep_proj, y1_dep_proj)
+    deplacement_projectile(projectile)
+    
 
 Canevas.focus_set()
 Canevas.bind('<Key>', Clavier)
