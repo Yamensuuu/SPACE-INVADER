@@ -4,10 +4,39 @@
 """
 
 
-"""import toutes les fonctions importantes"""
+"""Import toutes les fonctions importantes"""
 
 from tkinter import Tk, Label, Button
-from tkinter import BOTTOM, Canvas, LEFT
+from tkinter import  BOTTOM, Canvas
+import math, random
+def Clavier(event) :
+    global xo,yo, Canevas        
+    touche = event.keysym
+    print(touche)
+    if touche =='Right' :
+         xo+= 20  
+    if touche =='Left' :
+         xo-= 20
+    if touche =='Up' :
+         tirer(xo) 
+    Canevas.coords(vaisseau, xo-10,yo-10,xo+10,yo+10)
+
+"""
+Création fonction animation tir / attaque :
+"""
+
+def tirer(xo):
+     def deplacement_missile():
+          Canevas.move(bullet,0,-3)
+          Fenetre.after(20,deplacement_missile)
+
+     bullet = Canevas.create_rectangle(xo-1,yo-10,xo+1,yo+10,fill= 'red',outline = 'blue')
+
+
+     if Canevas.coords(bullet)[3]<100:
+          Canevas.delete(bullet)
+     deplacement_missile()
+
 
 """Création de fenêtre graphique"""
 Fenetre= Tk()
@@ -22,19 +51,27 @@ BouttonRejouer.pack(side = BOTTOM , padx = 40, pady = 5)
 
 Largeur = 1920
 Hauteur = 2500
+xo = 550
+yo = 370
+
+""" 
+Création du vaisseau, pour le moment rectangle.
+"""
 Canevas = Canvas(Fenetre, width = Largeur, height = Hauteur, bg = 'black')
-monCanvas = Canvas(Fenetre, width=70, height=70, bg='ivory', borderwidth=0, highlightthickness=0 )
-monCanvas.place(x=600,y=390)
+vaisseau = Canevas.create_rectangle(xo, yo, xo+20, yo+20, fill = 'blue')
+Canevas.focus_set()
 
-Canevas.pack()
-Fenetre.mainloop() 
-
-
+Canevas.bind('<Key>',Clavier)
+Canevas.pack(padx=10,pady=3)
 
 
 
 
 
 
+
+
+
+Fenetre.mainloop()
 
 
