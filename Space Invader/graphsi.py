@@ -59,19 +59,13 @@ Création du vaisseau, pour le moment rectangle.
 """
 Canevas = Canvas(Fenetre, width = Largeur, height = Hauteur, bg = 'black')
 vaisseau = Canevas.create_rectangle(xo, yo, xo+20, yo+20, fill = 'blue')
-Canevas.focus_set()
 
+
+Canevas.focus_set()
 Canevas.bind('<Key>',Clavier)
 Canevas.pack(padx=10,pady=3)
 
 
 
 
-
-
-
-
-
 Fenetre.mainloop()
-
-
