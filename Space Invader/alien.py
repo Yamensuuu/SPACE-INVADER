@@ -29,7 +29,7 @@ class Alien :
         
     
         self.X = self.X + self.DX
-        print(self.xmin-self.RAYON+self.DX)
+        #print(self.xmin-self.RAYON+self.DX)
         canvas.coords(objet, self.X - self.RAYON, self.Y - self.RAYON, self.X + self.RAYON, self.Y + self.RAYON)
 
         """ Modifier la valeur de xmin : valeur minimale du bloc d'alien """

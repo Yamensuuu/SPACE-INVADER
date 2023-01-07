@@ -20,9 +20,11 @@ class Vaisseau:
     #tir du projectile et déplacement de celui-ci
     def tirer(self, canevas, fenetre):
         """
+        fonction qui créee et tire le projectile
         """
         def deplacement_proj():
             """
+            fonction qui permet au projectile (ici bullet) de se déplacer
             """
             canevas.move(bullet,0,-3)
             fenetre.after(20,deplacement_proj)
@@ -33,8 +35,8 @@ class Vaisseau:
 
         if canevas.coords(bullet)[3]<100:
             canevas.delete(bullet)
-            a, b, c, d = canevas.coords(bullet)
-            return a, b, c, d
+            #a, b, c, d = canevas.coords(bullet)
+            #return a, b, c, d
         deplacement_proj()
 
 
