@@ -16,10 +16,10 @@ Canevas = Canvas(mw, width = Largeur, height = Hauteur, bg = 'black')
 item = Canevas.create_image(650,200,anchor=NW)
 
 #création de la fenetre de jeu 
-fenetre = Jeu(mw)
-fenetre.draw_fenetre(Canevas)
+fenetre = Jeu(mw,Canevas)
+fenetre.draw_fenetre()
 
-fenetre.init_jeu(Canevas)
+fenetre.init_jeu()
 
 Canevas.pack()
 mw.mainloop()
