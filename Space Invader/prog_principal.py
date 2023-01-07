@@ -1,5 +1,5 @@
 """
-Lucie Fabian - Yamen
+Lucie Fabian - Yamen Ben Guirat 
 12/12/22
 Programme principal du jeu Space Invader  
 """

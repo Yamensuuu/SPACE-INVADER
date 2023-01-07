@@ -1,5 +1,5 @@
 """
-Lucie Fabian - Yamen 
+Lucie Fabian - Yamen Ben Guirat 
 12/12/22
 Classe Alien
 ce qu'il manque : mettre les attribus en privé

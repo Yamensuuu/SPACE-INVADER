@@ -1,5 +1,5 @@
 """
-Lucie Fabian
+Lucie Fabian - Yamen Ben Guirat 
 12/12/22
 Classe Vaisseau
 ce qu'il manque : mettre les attribus en privé

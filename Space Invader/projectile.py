@@ -1,5 +1,5 @@
 """
-Lucie Fabian - Yamen
+Lucie Fabian - Yamen Ben Guirat
 12/12/22
 Classe Projectile 
 ce qu'il manque : mettre les attribus en privé, récupérer les coordonées du projectile si possible
