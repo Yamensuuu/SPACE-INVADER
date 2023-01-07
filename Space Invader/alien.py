@@ -46,3 +46,11 @@ class Alien :
 
     def get(self) :
         return self.X
+    
+
+    def getcoord(self) :
+        return self.X, self.Y
+    
+    def delete(self,objet,canevas) :
+        canevas.remove(objet)
+        

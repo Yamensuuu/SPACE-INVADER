@@ -30,7 +30,7 @@ class Jeu:
         self.PosY = 450
         self.al = []
         self.canevas = canevas
-        print("initialisation")
+        self.vaisseau = Vaisseau(self.PosX,self.PosY)
 
 
     #def get(self,x):
@@ -57,13 +57,10 @@ class Jeu:
             
         self.alien = alien
         #création d'un vaisseau (le joueur)
-        vaisseau = Vaisseau(self.PosX, self.PosY)
         self.vaiss = self.canevas.create_rectangle(self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10, width = 2, outline = 'white', fill = 'grey')
-        self.canevas.bind("<Key>", lambda event : vaisseau.Clavier(self.vaiss, event, self.canevas, self.Fenetre))
-        self.vaisseau = vaisseau
+        self.canevas.bind("<Key>", lambda event : self.vaisseau.Clavier(self.vaiss, event, self.canevas))
         self.refresh()
-        #création des projectiles
-        projectile = Projectile()
+        
         #canevas.bind("<space>", lambda event : projectile.tirer(canevas, self.Fenetre, self.PosX, self.PosY, event))
 
     """ deplacement des aliens"""
@@ -71,4 +68,14 @@ class Jeu:
         self.alien.setminmax()
         for i in range(len(self.alien.getligne())):
             self.alien.getligne()[i].deplacement(self.al[i],self.canevas)
+        for i in self.vaisseau.gettir():
+            i.bougertir()
+
+                
+        for i in self.alien.getligne() :
+            for v in self.vaisseau.gettir():
+                if i.getcoord() == v.getcoord() :
+                    self.vaisseau.delete(v)
+                    self.alien.deletealien(i)
         self.Fenetre.after(20,self.refresh)
+        

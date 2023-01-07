@@ -5,41 +5,25 @@ Classe Vaisseau
 ce qu'il manque : mettre les attribus en privé
 """
 
+
+from projectile import Projectile
+
 class Vaisseau:
     #INITIALISATION
     def __init__(self,PosX,PosY):
         self.PosX = PosX
         self.PosY = PosY
+        self.tir = []
+
 
     def get_coords(self, canevas):
-        """
-        récupère et retourne les (4) coordonnées du vaisseau (joueur)
-        """
+        
+        #récupère et retourne les (4) coordonnées du vaisseau (joueur)
+        
         return canevas.coords(self)
 
-    #tir du projectile et déplacement de celui-ci
-    def tirer(self, canevas, fenetre):
-        """
-        """
-        def deplacement_proj():
-            """
-            """
-            canevas.move(bullet,0,-3)
-            fenetre.after(20,deplacement_proj)
-
-        #création du projectile dans le canvas
-        bullet = canevas.create_rectangle(self.PosX - 1, self.PosY - 10, self.PosX + 1, self.PosY + 10,fill= 'red',outline = 'blue')
-
-
-        if canevas.coords(bullet)[3]<100:
-            canevas.delete(bullet)
-            a, b, c, d = canevas.coords(bullet)
-            return a, b, c, d
-        deplacement_proj()
-
-
     #fonction pour faire bouger le vaisseau avec le clavier
-    def Clavier (self, objet, event, canevas, fenetre):
+    def Clavier (self, objet, event, canevas):
         """
         permet de déplacer le vaisseau à gauche ou à droite à l'aide des touches du clavier
         """
@@ -56,5 +40,13 @@ class Vaisseau:
             canevas.coords(objet,self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10) 
         
         elif touche == 'space' :
-            self.tirer(canevas, fenetre)
+            self.tir.append(Projectile(canevas,self.PosX,self.PosY))
         
+
+    def gettir(self) :
+        return self.tir
+    
+    def delete(self,t) :
+        if t in self.tir:
+            self.tir.remove(t)
+            t.delete()
