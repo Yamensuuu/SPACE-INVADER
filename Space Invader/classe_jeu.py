@@ -66,8 +66,10 @@ class Jeu:
         projectile = Projectile()
         #canevas.bind("<space>", lambda event : projectile.tirer(canevas, self.Fenetre, self.PosX, self.PosY, event))
 
-    """ deplacement des aliens"""
     def refresh(self):
+        """ 
+        Fonction qui gère le deplacement des aliens
+        """
         self.alien.setminmax()
         for i in range(len(self.alien.getligne())):
             self.alien.getligne()[i].deplacement(self.al[i],self.canevas)
