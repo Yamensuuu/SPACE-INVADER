@@ -1,11 +1,11 @@
 """
-Lucie Fabian
+Lucie Fabian - Yamen
 12/12/22
 Classe Jeu 
 ce qu'il manque : mettre les attribus en privé
 """
 
-from tkinter import Tk, Label, Button, Menu, Frame, BOTTOM, StringVar, Canvas, NW  
+from tkinter import Label, Button, Menu, Frame, BOTTOM, StringVar, Canvas, NW  
 from alien import Alien
 from vaisseau import Vaisseau
 from projectile import Projectile

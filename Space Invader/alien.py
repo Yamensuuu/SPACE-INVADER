@@ -1,5 +1,5 @@
 """
-Lucie Fabian
+Lucie Fabian - Yamen 
 12/12/22
 Classe Alien
 ce qu'il manque : mettre les attribus en privé

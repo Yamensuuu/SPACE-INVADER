@@ -3,7 +3,6 @@ Lucie Fabian
 12/12/22
 Classe Vaisseau
 ce qu'il manque : mettre les attribus en privé
-                  définir la fonction shoot()
 """
 
 class Vaisseau:
@@ -18,15 +17,13 @@ class Vaisseau:
         """
         return canevas.coords(self)
 
-    #def get_canvas(canevas):
-        #return canevas
-
-    #tir du projectile
+    #tir du projectile et déplacement de celui-ci
     def tirer(self, canevas, fenetre):
         def deplacement_proj():
             canevas.move(bullet,0,-3)
             fenetre.after(20,deplacement_proj)
 
+        #création du projectile dans le canvas
         bullet = canevas.create_rectangle(self.PosX - 1, self.PosY - 10, self.PosX + 1, self.PosY + 10,fill= 'red',outline = 'blue')
 
 
