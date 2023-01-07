@@ -33,6 +33,9 @@ class Jeu:
         #return self.__x
     
     def draw_fenetre(self, canevas):
+        """
+        fonction permettant de créer la fenêtre  ainsi que les différents boutons
+        """
         self.Fenetre.title('Space Invaders')
         self.Fenetre.configure(bg='black')
         self.Title.pack()
@@ -41,13 +44,15 @@ class Jeu:
         self.LabelScore.pack(side = 'left', padx = 30, pady = 70)
         self.BoutonQuitt.pack(side = 'left', padx = 30, pady = 70)
         canevas.focus_set()
-        #canevas.pack()
-        #self.Fenetre.mainloop() 
 
     def init_jeu(self, canevas):
-        #création d'un alien
+        """
+        initialisation du jeu : création de l'alien (ennemi), du vaisseau (joueur), tous 2 mobiles
+        """
+        #création de l'alien (ennemi)
         alien = Alien(self.X, self.Y, self.RAYON, self.vitesse, self.DY)
         self.al = canevas.create_oval(self.X-self.RAYON, self.Y-self.RAYON, self.X+self.RAYON, self.Y+self.RAYON, width = 1, outline = 'red', fill = 'red')
+        #on appelle la fonction deplacement qui va gérer le déplacement (pour l'instant horizontale) de l'alien
         alien.deplacement(self.al, canevas, self.Fenetre)
         self.alien = alien
         #création d'un vaisseau (le joueur)
@@ -56,5 +61,5 @@ class Jeu:
         canevas.bind("<Key>", lambda event : vaisseau.Clavier(self.vaiss, event, canevas, self.Fenetre))
         self.vaisseau = vaisseau
         #création des projectiles
-        projectile = Projectile()
+        #projectile = Projectile()
         #canevas.bind("<space>", lambda event : projectile.tirer(canevas, self.Fenetre, self.PosX, self.PosY, event))
