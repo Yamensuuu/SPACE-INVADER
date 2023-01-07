@@ -1,7 +1,7 @@
 """ 
 Lucie Fabian - Yamen Ben Guirat
 07/01/23
-Création de la classe ligne (pour avion une ligne d'Aliens) 
+Création de la classe ligne (pour avoir une ligne d'Aliens) 
 """
 
 from alien import Alien
@@ -16,7 +16,9 @@ class ligne():
         return self.liste
     
     def setminmax(self):
-        """ Renitialiser les valeurs de xmin et xmax """
+        """
+        Renitialiser les valeurs de xmin et xmax 
+        """
         for i in self.liste :
             i.setxmin(self.liste[0].get())
             i.setxmax(self.liste[-1].get())
