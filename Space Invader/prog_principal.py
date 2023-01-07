@@ -1,7 +1,7 @@
 """
 Lucie Fabian - Yamen
 12/12/22
-Programme principal du jeu Space Invader 
+Programme principal du jeu Space Invader  
 """
 
 from tkinter import Tk, Canvas, NW  

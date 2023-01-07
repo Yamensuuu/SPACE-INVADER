@@ -19,7 +19,11 @@ class Vaisseau:
 
     #tir du projectile et déplacement de celui-ci
     def tirer(self, canevas, fenetre):
+        """
+        """
         def deplacement_proj():
+            """
+            """
             canevas.move(bullet,0,-3)
             fenetre.after(20,deplacement_proj)
 
