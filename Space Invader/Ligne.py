@@ -1,6 +1,10 @@
-from alien import Alien
+""" 
+Lucie Fabian - Yamen Ben Guirat
+07/01/23
+Création de la classe ligne (pour avion une ligne d'Aliens) 
+"""
 
-""" Creer class ligne Aliens """
+from alien import Alien
 
 class ligne():
     def __init__(self, Y, Rayon, vitesse) :
