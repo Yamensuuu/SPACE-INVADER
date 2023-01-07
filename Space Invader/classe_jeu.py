@@ -1,11 +1,11 @@
 """
-Lucie Fabian
+Lucie Fabian - Yamen
 12/12/22
 Classe Jeu 
 ce qu'il manque : mettre les attribus en privé
 """
 
-from tkinter import Tk, Label, Button, Menu, Frame, BOTTOM, StringVar, Canvas, NW  
+from tkinter import Label, Button, Menu, Frame, BOTTOM, StringVar, Canvas, NW  
 from alien import Alien
 from vaisseau import Vaisseau
 from projectile import Projectile
@@ -30,6 +30,7 @@ class Jeu:
         self.PosY = 450
         self.al = []
         self.canevas = canevas
+        print("initialisation")
 
 
     #def get(self,x):
@@ -44,16 +45,16 @@ class Jeu:
         self.LabelScore.pack(side = 'left', padx = 30, pady = 70)
         self.BoutonQuitt.pack(side = 'left', padx = 30, pady = 70)
         self.canevas.focus_set()
-        #canevas.pack()
-        #self.Fenetre.mainloop() 
 
     def init_jeu(self):
-        #création d'un alien
+        """
+        initialisation du jeu : création de l'alien (ennemi), du vaisseau (joueur), tous 2 mobiles
+        """
+        #création de l'alien (ennemi)
         alien = ligne(self.Y, self.RAYON, self.vitesse)
-        for i in alien.getligne() :
+        for i in range(len(alien.getligne())):
             self.al.append(self.canevas.create_oval(self.X-self.RAYON, self.Y-self.RAYON, self.X+self.RAYON, self.Y+self.RAYON, width = 1, outline = 'red', fill = 'red'))
-        for i in range(len(self.al)):
-            alien.getligne()[i].deplacement(self.al[i], self.canevas)
+            
         self.alien = alien
         #création d'un vaisseau (le joueur)
         vaisseau = Vaisseau(self.PosX, self.PosY)

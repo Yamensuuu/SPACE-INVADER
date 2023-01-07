@@ -1,5 +1,5 @@
 """
-Lucie Fabian
+Lucie Fabian - Yamen 
 12/12/22
 Classe Alien
 ce qu'il manque : mettre les attribus en privé
@@ -24,7 +24,7 @@ class Alien :
         """
         if self.xmin - self.RAYON + self.DX == self.RAYON : 
             self.Y += 10
-        if self.xmax + self.RAYON + self.DX > 1000 or self.xmin - self.RAYON + self.DX < 0: 
+        elif self.xmax + self.RAYON + self.DX > 1000 or self.xmin - self.RAYON + self.DX < 0: 
             self.DX = - self.DX
         
     

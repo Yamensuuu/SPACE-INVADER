@@ -1,14 +1,14 @@
 """
-Lucie Fabian
+Lucie Fabian - Yamen
 12/12/22
-Programme principal du jeu Space Invader
+Programme principal du jeu Space Invader 
 """
 
 from tkinter import Tk, Canvas, NW  
 #on importe le ou les classes qui sont chacunes dans un fichier
 from classe_jeu import Jeu
-from vaisseau import Vaisseau
 
+#création du canvas dans le programme principal, le reste se fait dans la classe Jeu
 mw = Tk()
 Largeur = 1000
 Hauteur = 500
