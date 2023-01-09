@@ -41,11 +41,13 @@ class Vaisseau:
             canevas.coords(objet,self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10) 
         
         elif touche == 'space' :
-            self.tir.append(Projectile(canevas,self.PosX,self.PosY))
-        
-
+            projectile = Projectile(canevas,self.PosX,self.PosY)
+            self.tir.append(projectile)
+               
+               
     def gettir(self) :
         return self.tir
+        print (self.tir)
     
     def delete(self,t) :
         """

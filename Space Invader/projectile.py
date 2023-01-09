@@ -25,9 +25,18 @@ class Projectile:
     def getcoord(self) :
         return self.PosX, self.PosY
     
-
+    def getY(self):
+        return self.PosY
+    
     def delete(self) :
         """
         Fonction qui supprime le projectile
         """
         self.canevas.remove(self.objet)
+    
+    #def proj_in_canvas(self):
+        #print (self.PosY)
+        #if self.PosY > 0 : 
+            #return False
+        #else : 
+            #return True

@@ -13,8 +13,6 @@ from Ligne import ligne
 
 class Jeu:
 
-    global tir_en_cours
-
     def __init__(self, Fenetre,canevas):
         self.Fenetre = Fenetre
         self.Title = Label(self.Fenetre, text = " Space Invaders",relief ='raised', fg = "blue", font = ("Courier", 30))
@@ -33,7 +31,6 @@ class Jeu:
         self.al = []
         self.canevas = canevas
         self.vaisseau = Vaisseau(self.PosX,self.PosY)
-
 
     #def get(self,x):
         #return self.__x
@@ -59,7 +56,7 @@ class Jeu:
     def init_jeu(self):
         """
         initialisation du jeu : création des aliens (ennemis), du vaisseau (joueur), tous 2 mobiles
-        """
+        """ 
         #création des aliens (ennemis)
         alien = ligne(self.Y, self.RAYON, self.vitesse)
         for i in range(len(alien.getligne())):
@@ -69,7 +66,6 @@ class Jeu:
         #création d'un vaisseau (le joueur)
         self.vaiss = self.canevas.create_rectangle(self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10, width = 2, outline = 'white', fill = 'grey')
         self.canevas.bind("<Key>", lambda event : self.vaisseau.Clavier(self.vaiss, event, self.canevas))
-        if 
         self.refresh()
         
         #canevas.bind("<space>", lambda event : projectile.tirer(canevas, self.Fenetre, self.PosX, self.PosY, event))
@@ -90,5 +86,5 @@ class Jeu:
                 if i.getcoord() == v.getcoord() :
                     self.vaisseau.delete(v)
                     self.alien.deletealien(i)
+
         self.Fenetre.after(20,self.refresh)
-        
