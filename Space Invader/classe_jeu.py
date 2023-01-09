@@ -5,7 +5,7 @@ Classe Jeu
 ce qu'il manque : mettre les attribus en privé
 """
 
-from tkinter import Label, Button, Menu, Frame, BOTTOM, StringVar, Canvas, NW  
+from tkinter import Label, Button, Menu, Frame, BOTTOM, StringVar, NW  
 from alien import Alien
 from vaisseau import Vaisseau
 from projectile import Projectile
@@ -62,13 +62,15 @@ class Jeu:
         for i in range(len(alien.getligne())):
             self.al.append(self.canevas.create_oval(self.X-self.RAYON, self.Y-self.RAYON, self.X+self.RAYON, self.Y+self.RAYON, width = 1, outline = 'red', fill = 'red'))
         
+        schedule.every(10).minutes.do(tir_alien)
+
         self.alien = alien
         #création d'un vaisseau (le joueur)
         self.vaiss = self.canevas.create_rectangle(self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10, width = 2, outline = 'white', fill = 'grey')
         self.canevas.bind("<Key>", lambda event : self.vaisseau.Clavier(self.vaiss, event, self.canevas))
         self.refresh()
         
-        
+
     def refresh(self):
         """ 
         Fonction qui gère le déplacement des aliens, la position de départ du tir, mais aussi le contact entre le tir et les aliens 
