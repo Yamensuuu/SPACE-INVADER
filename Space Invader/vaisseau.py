@@ -5,7 +5,7 @@ Classe Vaisseau
 ce qu'il manque : mettre les attribus en privé
 """
 
-
+from alien import Alien
 from projectile import Projectile
 
 class Vaisseau:
@@ -14,6 +14,7 @@ class Vaisseau:
         self.PosX = PosX
         self.PosY = PosY
         self.tir = []
+        self.tir_alien = []
 
 
     def get_coords(self, canevas):
@@ -44,7 +45,7 @@ class Vaisseau:
 
     def gettir(self) :
         return self.tir
-
+        
     def delete(self,t) :
         if t in self.tir:
             self.tir.remove(t)

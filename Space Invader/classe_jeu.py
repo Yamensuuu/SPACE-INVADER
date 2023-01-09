@@ -76,6 +76,8 @@ class Jeu:
         self.alien.setminmax()
         for i in range(len(self.alien.getligne())):
             self.alien.getligne()[i].deplacement(self.al[i],self.canevas)
+        for i in self.alien.getligne():
+            i.tir_alien()
         for i in self.vaisseau.gettir():
             i.bougertir()
 
