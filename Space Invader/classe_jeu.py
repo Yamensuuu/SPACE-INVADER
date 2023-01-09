@@ -13,6 +13,8 @@ from Ligne import ligne
 
 class Jeu:
 
+    global tir_en_cours
+
     def __init__(self, Fenetre,canevas):
         self.Fenetre = Fenetre
         self.Title = Label(self.Fenetre, text = " Space Invaders",relief ='raised', fg = "blue", font = ("Courier", 30))
@@ -67,6 +69,7 @@ class Jeu:
         #création d'un vaisseau (le joueur)
         self.vaiss = self.canevas.create_rectangle(self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10, width = 2, outline = 'white', fill = 'grey')
         self.canevas.bind("<Key>", lambda event : self.vaisseau.Clavier(self.vaiss, event, self.canevas))
+        if 
         self.refresh()
         
         #canevas.bind("<space>", lambda event : projectile.tirer(canevas, self.Fenetre, self.PosX, self.PosY, event))

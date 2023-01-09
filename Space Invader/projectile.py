@@ -17,7 +17,7 @@ class Projectile:
 
     def bougertir(self) :
         """
-        Fonction qui fait bouger le tirer à une certaine vitesse (ici vitesse = 5)
+        Fonction qui fait bouger le tirer à une certaine vitesse 
         """
         self.PosY -= self.vitesse
         self.canevas.move(self.objet,0,-self.vitesse)
