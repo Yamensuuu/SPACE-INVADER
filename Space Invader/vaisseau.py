@@ -49,7 +49,7 @@ class Vaisseau:
     
     def delete(self,t) :
         """
-        Fonction qui 
+        Fonction 
         """
         if t in self.tir:
             self.tir.remove(t)

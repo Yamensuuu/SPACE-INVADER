@@ -63,5 +63,5 @@ class Alien :
         """
         Fonction qui supprime l'alien ( = l'efface du canvas)
         """
-        canevas.remove(objet)
+        canevas.delete(objet)
         
