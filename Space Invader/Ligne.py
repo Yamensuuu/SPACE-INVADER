@@ -1,7 +1,7 @@
 """ 
 Lucie Fabian - Yamen Ben Guirat
 07/01/23
-Création de la classe ligne (pour avoir une ligne d'Aliens) 
+Création de la classe ligne (pour avoir une ligne d'aliens) 
 """
 
 from alien import Alien
