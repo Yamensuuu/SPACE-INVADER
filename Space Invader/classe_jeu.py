@@ -49,9 +49,9 @@ class Jeu:
         menubar = Menu(self.Fenetre)
         menufichier = Menu(menubar, tearoff = 0)
         menufichier.add_command(label = 'Quitter', command = self.Fenetre.destroy)
-        menufichier.add_command(label = 'Quitter2', command = self.Fenetre.destroy)
-        menufichier.add_command(label = 'Quitter3', command = self.Fenetre.destroy)
-        menubar.add_cascade(label='Test 1', menu = menufichier)
+        #menufichier.add_command(label = 'Quitter2', command = self.Fenetre.destroy)
+        #menufichier.add_command(label = 'Quitter3', command = self.Fenetre.destroy)
+        menubar.add_cascade(label='Menu', menu = menufichier)
         #menubar.add_cascade(label='Test 2', fg = 'white', menu = menufichier)
         self.Fenetre.config(menu = menubar)
 
