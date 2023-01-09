@@ -67,6 +67,3 @@ class Alien :
         """
         canevas.delete(objet)
     
-    def tir_alien(self):
-        self.Y += self.vitesse
-        self.canevas.move(self.canevas.create_rectangle(self.X - 1, self.Y - 10, self.X + 1, self.Y + 10,fill= 'red',outline = 'white'),0,+self.vitesse)

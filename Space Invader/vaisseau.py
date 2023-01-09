@@ -39,17 +39,13 @@ class Vaisseau:
         
         #on tire un projectile qui part du vaisseau
         elif touche == 'space' :
-            projectile = Projectile(canevas,self.PosX,self.PosY)
-            self.tir.append(projectile)
+            self.tir.append(Projectile(canevas,self.PosX,self.PosY))
                
 
     def gettir(self) :
         return self.tir
-    
+
     def delete(self,t) :
-        """
-        Fonction 
-        """
         if t in self.tir:
             self.tir.remove(t)
             t.delete()
