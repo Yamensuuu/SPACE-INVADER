@@ -9,7 +9,7 @@ ce qu'il manque : mettre les attribus en privé
 class Alien :
 
     #INITIALISATION
-    def __init__(self, X, Y, RAYON, vitesse, xmin, xmax):
+    def __init__(self, X, Y, RAYON, vitesse, xmin, xmax, canevas, fenetre):
         self.X = X #Jeu.Largeur / 2
         self.Y = Y #Jeu.Hauteur / 2 - 200
         self.xmin = xmin
@@ -18,6 +18,8 @@ class Alien :
         self.vitesse = vitesse
         self.DX = self.vitesse
         self.sens = 1
+        self.canevas = canevas
+        self.fenetre = fenetre
 
     def deplacement(self, objet, canvas):
         """
@@ -64,4 +66,7 @@ class Alien :
         Fonction qui supprime l'alien ( = l'efface du canvas)
         """
         canevas.delete(objet)
-        
+    
+    def tir_alien(self):
+        self.Y += self.vitesse
+        self.canevas.move(self.canevas.create_rectangle(self.X - 1, self.Y - 10, self.X + 1, self.Y + 10,fill= 'red',outline = 'white'),0,+self.vitesse)

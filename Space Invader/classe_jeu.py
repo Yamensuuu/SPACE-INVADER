@@ -58,18 +58,17 @@ class Jeu:
         initialisation du jeu : création des aliens (ennemis), du vaisseau (joueur), tous 2 mobiles
         """ 
         #création des aliens (ennemis)
-        alien = ligne(self.Y, self.RAYON, self.vitesse)
+        alien = ligne(self.Y, self.RAYON, self.vitesse, self.canevas, self.Fenetre)  
         for i in range(len(alien.getligne())):
             self.al.append(self.canevas.create_oval(self.X-self.RAYON, self.Y-self.RAYON, self.X+self.RAYON, self.Y+self.RAYON, width = 1, outline = 'red', fill = 'red'))
-            
+        
         self.alien = alien
         #création d'un vaisseau (le joueur)
         self.vaiss = self.canevas.create_rectangle(self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10, width = 2, outline = 'white', fill = 'grey')
         self.canevas.bind("<Key>", lambda event : self.vaisseau.Clavier(self.vaiss, event, self.canevas))
         self.refresh()
         
-        #canevas.bind("<space>", lambda event : projectile.tirer(canevas, self.Fenetre, self.PosX, self.PosY, event))
-
+        
     def refresh(self):
         """ 
         Fonction qui gère le déplacement des aliens, la position de départ du tir, mais aussi le contact entre le tir et les aliens 

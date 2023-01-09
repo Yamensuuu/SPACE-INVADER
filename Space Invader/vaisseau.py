@@ -17,9 +17,7 @@ class Vaisseau:
 
 
     def get_coords(self, canevas):
-        
         #récupère et retourne les (4) coordonnées du vaisseau (joueur)
-        
         return canevas.coords(self)
 
     #fonction pour faire bouger le vaisseau avec le clavier
@@ -44,10 +42,9 @@ class Vaisseau:
             projectile = Projectile(canevas,self.PosX,self.PosY)
             self.tir.append(projectile)
                
-               
+
     def gettir(self) :
         return self.tir
-        print (self.tir)
     
     def delete(self,t) :
         """
