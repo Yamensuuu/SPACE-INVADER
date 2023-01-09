@@ -3,7 +3,6 @@ Lucie Fabian - Yamen Ben Guirat
 12/12/22
 Classe Projectile 
 ce qu'il manque : mettre les attribus en privé, récupérer les coordonées du projectile si possible
-                  essayer de mettre dans cette classe la fonction qui permet de tirer un projectile en ppuyant sur la touche espace
 """
 
 class Projectile:  
@@ -17,6 +16,9 @@ class Projectile:
 
 
     def bougertir(self) :
+        """
+        Fonction qui fait bouger le tirer à une certaine vitesse (ici vitesse = 5)
+        """
         self.PosY -= self.vitesse
         self.canevas.move(self.objet,0,-self.vitesse)
 
@@ -25,4 +27,7 @@ class Projectile:
     
 
     def delete(self) :
+        """
+        Fonction qui supprime le projectile
+        """
         self.canevas.remove(self.objet)

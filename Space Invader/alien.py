@@ -18,39 +18,50 @@ class Alien :
         self.vitesse = vitesse
         self.DX = self.vitesse
         self.sens = 1
+
     def deplacement(self, objet, canvas):
         """
-        déplacement de l'oval (l'alien) horizontalement avec une vitesse uniforme
+        Fonction qui gère le déplacement de l'oval (l'alien) horizontalement avec une vitesse uniforme
         """
         if self.xmin - self.RAYON + self.DX == self.RAYON : 
             self.Y += 10
         elif self.xmax + self.RAYON + self.DX > 1000 or self.xmin - self.RAYON + self.DX < 0: 
             self.DX = - self.DX
         
-    
         self.X = self.X + self.DX
-        #print(self.xmin-self.RAYON+self.DX)
         canvas.coords(objet, self.X - self.RAYON, self.Y - self.RAYON, self.X + self.RAYON, self.Y + self.RAYON)
 
-        """ Modifier la valeur de xmin : valeur minimale du bloc d'alien """
-
     def setxmin(self, xmin):
+        """ 
+        Fonction qui va modifier la valeur de xmin : valeur minimale du bloc d'alien 
+        """
         self.xmin = xmin
-        
-        """ Modifier la valeur de xmax : valeur max du bloc d'alien """
 
     def setxmax(self, xmax):
+        """ 
+        Fonction qui va modifier la valeur de xmax : valeur max du bloc d'alien 
+        sortie : valeur max de x (abscisse de l'alien)
+        """
         self.xmax = xmax
 
-        """ Retourne la position de l'alien selon x"""
-
     def get(self) :
+        """ 
+        Fonction qui retourne la position de l'alien selon x
+        sortie : abscisse de l'alien
+        """
         return self.X
     
 
     def getcoord(self) :
+        """
+        Fonction qui retourne les coordonnées de l'alien 
+        sorties : abscisse (X) et ordonnée (Y) de l'alien 
+        """
         return self.X, self.Y
     
     def delete(self,objet,canevas) :
+        """
+        Fonction qui supprime l'alien ( = l'efface du canvas)
+        """
         canevas.remove(objet)
         

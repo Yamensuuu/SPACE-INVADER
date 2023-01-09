@@ -17,7 +17,7 @@ class ligne():
     
     def setminmax(self):
         """
-        Renitialiser les valeurs de xmin et xmax 
+        Fonction qui reinitialise les valeurs de xmin et xmax 
         """
         for i in self.liste :
             i.setxmin(self.liste[0].get())

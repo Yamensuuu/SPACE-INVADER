@@ -25,7 +25,8 @@ class Vaisseau:
     #fonction pour faire bouger le vaisseau avec le clavier
     def Clavier (self, objet, event, canevas):
         """
-        permet de déplacer le vaisseau à gauche ou à droite à l'aide des touches du clavier
+        Fonction qui permet de déplacer le vaisseau à gauche ou à droite à l'aide des touches du clavier 
+        touche 'm' pour aller à gauche et touche 'l' pour aller à droite
         """
         touche = event.keysym
         #canevas = Vaisseau.get_canvas(canevas)
@@ -47,6 +48,9 @@ class Vaisseau:
         return self.tir
     
     def delete(self,t) :
+        """
+        Fonction qui 
+        """
         if t in self.tir:
             self.tir.remove(t)
             t.delete()

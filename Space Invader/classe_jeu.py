@@ -52,14 +52,13 @@ class Jeu:
         #menufichier.add_command(label = 'Quitter2', command = self.Fenetre.destroy)
         #menufichier.add_command(label = 'Quitter3', command = self.Fenetre.destroy)
         menubar.add_cascade(label='Menu', menu = menufichier)
-        #menubar.add_cascade(label='Test 2', fg = 'white', menu = menufichier)
         self.Fenetre.config(menu = menubar)
 
     def init_jeu(self):
         """
-        initialisation du jeu : création de l'alien (ennemi), du vaisseau (joueur), tous 2 mobiles
+        initialisation du jeu : création des aliens (ennemis), du vaisseau (joueur), tous 2 mobiles
         """
-        #création de l'alien (ennemi)
+        #création des aliens (ennemis)
         alien = ligne(self.Y, self.RAYON, self.vitesse)
         for i in range(len(alien.getligne())):
             self.al.append(self.canevas.create_oval(self.X-self.RAYON, self.Y-self.RAYON, self.X+self.RAYON, self.Y+self.RAYON, width = 1, outline = 'red', fill = 'red'))
@@ -74,7 +73,7 @@ class Jeu:
 
     def refresh(self):
         """ 
-        Fonction qui gère le deplacement des aliens
+        Fonction qui gère le déplacement des aliens, la position de départ du tir, mais aussi le contact entre le tir et les aliens 
         """
         self.alien.setminmax()
         for i in range(len(self.alien.getligne())):
