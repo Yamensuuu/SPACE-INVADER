@@ -27,7 +27,6 @@ class Vaisseau:
         touche 'm' pour aller à gauche et touche 'l' pour aller à droite
         """
         touche = event.keysym
-        #canevas = Vaisseau.get_canvas(canevas)
         #deplacement vers la droite
         if touche == 'm' :
             self.PosX = self.PosX + 20

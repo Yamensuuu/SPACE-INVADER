@@ -61,8 +61,6 @@ class Jeu:
         alien = ligne(self.Y, self.RAYON, self.vitesse, self.canevas, self.Fenetre)  
         for i in range(len(alien.getligne())):
             self.al.append(self.canevas.create_oval(self.X-self.RAYON, self.Y-self.RAYON, self.X+self.RAYON, self.Y+self.RAYON, width = 1, outline = 'red', fill = 'red'))
-        
-        schedule.every(10).minutes.do(tir_alien)
 
         self.alien = alien
         #création d'un vaisseau (le joueur)
