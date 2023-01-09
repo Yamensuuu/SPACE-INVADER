@@ -37,6 +37,7 @@ class Vaisseau:
             self.PosX = self.PosX - 20
             canevas.coords(objet,self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10) 
         
+        #on tire un projectile qui part du vaisseau
         elif touche == 'space' :
             projectile = Projectile(canevas,self.PosX,self.PosY)
             self.tir.append(projectile)
