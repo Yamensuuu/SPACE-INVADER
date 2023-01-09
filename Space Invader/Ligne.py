@@ -16,14 +16,10 @@ class ligne():
         return self.liste
     
     def setminmax(self):
-        #Renitialiser les valeurs de xmin et xmax
+        """
+        Renitialiser les valeurs de xmin et xmax 
+        """
         for i in self.liste :
             i.setxmin(self.liste[0].get())
             i.setxmax(self.liste[-1].get())
         print(self.liste[-1].get())
-
-    def deletealien(self,alien,objet,canevas) :
-        #Supression alien
-        if alien in self.liste:
-            self.liste.remove(alien)
-            alien.delete(objet,canevas)
