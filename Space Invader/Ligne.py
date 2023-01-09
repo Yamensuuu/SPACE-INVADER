@@ -10,6 +10,7 @@ class ligne():
 
     def __init__(self, Y, Rayon, vitesse, canevas, fenetre) :
         self.liste = []
+        self.tir_alien = []
         self.canevas = canevas
         self.fenetre = fenetre
         for i in range(50,500,50) :
