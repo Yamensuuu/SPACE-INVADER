@@ -45,6 +45,15 @@ class Jeu:
         self.LabelScore.pack(side = 'left', padx = 30, pady = 70)
         self.BoutonQuitt.pack(side = 'left', padx = 30, pady = 70)
         self.canevas.focus_set()
+        #création d'une barre de menu (test))
+        menubar = Menu(self.Fenetre)
+        menufichier = Menu(menubar, tearoff = 0)
+        menufichier.add_command(label = 'Quitter', command = self.Fenetre.destroy)
+        menufichier.add_command(label = 'Quitter2', command = self.Fenetre.destroy)
+        menufichier.add_command(label = 'Quitter3', command = self.Fenetre.destroy)
+        menubar.add_cascade(label='Test 1', menu = menufichier)
+        #menubar.add_cascade(label='Test 2', fg = 'white', menu = menufichier)
+        self.Fenetre.config(menu = menubar)
 
     def init_jeu(self):
         """
