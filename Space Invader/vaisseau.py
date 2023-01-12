@@ -5,7 +5,7 @@ Classe Vaisseau
 ce qu'il manque : mettre les attribus en privé
 """
 
-
+from alien import Alien
 from projectile import Projectile
 
 class Vaisseau:
@@ -14,23 +14,22 @@ class Vaisseau:
         self.PosX = PosX
         self.PosY = PosY
         self.tir = []
+        self.tir_alien = []
 
 
-    def get_coords(self, canevas):
-        
+    def get_coords(self):
         """
         Récupère et retourne les (4) coordonnées du vaisseau (joueur)
         """
-        
-        return canevas.coords(self)
+        return self.PosX , self.PosY
 
     #fonction pour faire bouger le vaisseau avec le clavier
     def Clavier (self, objet, event, canevas):
         """
-        permet de déplacer le vaisseau à gauche ou à droite à l'aide des touches du clavier
+        Fonction qui permet de déplacer le vaisseau à gauche ou à droite à l'aide des touches du clavier 
+        touche 'm' pour aller à gauche et touche 'l' pour aller à droite
         """
         touche = event.keysym
-        #canevas = Vaisseau.get_canvas(canevas)
         #deplacement vers la droite
         if touche == 'm' :
             self.PosX = self.PosX + 20
@@ -41,13 +40,14 @@ class Vaisseau:
             self.PosX = self.PosX - 20
             canevas.coords(objet,self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10) 
         
+        #on tire un projectile qui part du vaisseau
         elif touche == 'space' :
-            self.tir.append(Projectile(canevas,self.PosX,self.PosY))
-        
+            self.tir.append(Projectile(canevas,self.PosX,self.PosY,1))
+               
 
     def gettir(self) :
         return self.tir
-    
+        
 
 
     def delete(self,t) :

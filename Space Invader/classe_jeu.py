@@ -5,7 +5,7 @@ Classe Jeu
 ce qu'il manque : mettre les attribus en privé
 """
 
-from tkinter import Label, Button, Menu, Frame, BOTTOM, StringVar, Canvas, NW  
+from tkinter import Label, Button, Menu, Frame, BOTTOM, StringVar, NW  
 from alien import Alien
 from vaisseau import Vaisseau
 from projectile import Projectile
@@ -31,9 +31,10 @@ class Jeu:
         self.DX = self.vitesse
         self.PosX = 500
         self.PosY = 450
-        self.al = []
         self.canevas = canevas
         self.vaisseau = Vaisseau(self.PosX,self.PosY)
+        self.tir = [[],[]]
+
 
 
     def draw_fenetre(self):
@@ -54,43 +55,58 @@ class Jeu:
         menubar = Menu(self.Fenetre)
         menufichier = Menu(menubar, tearoff = 0)
         menufichier.add_command(label = 'Quitter', command = self.Fenetre.destroy)
-        menufichier.add_command(label = 'Quitter2', command = self.Fenetre.destroy)
-        menufichier.add_command(label = 'Quitter3', command = self.Fenetre.destroy)
-        menubar.add_cascade(label='Test 1', menu = menufichier)
-        #menubar.add_cascade(label='Test 2', fg = 'white', menu = menufichier)
+        #menufichier.add_command(label = 'Quitter2', command = self.Fenetre.destroy)
+        #menufichier.add_command(label = 'Quitter3', command = self.Fenetre.destroy)
+        menubar.add_cascade(label='Menu', menu = menufichier)
         self.Fenetre.config(menu = menubar)
 
     def init_jeu(self):
         """
-        initialisation du jeu : création de l'alien (ennemi), du vaisseau (joueur), tous 2 mobiles
-        """
-        #création de l'alien (ennemi)
-        alien = ligne(self.Y, self.RAYON, self.vitesse)
-        for i in range(len(alien.getligne())):
-            self.al.append(self.canevas.create_oval(self.X-self.RAYON, self.Y-self.RAYON, self.X+self.RAYON, self.Y+self.RAYON, width = 1, outline = 'red', fill = 'red'))
-            
+        initialisation du jeu : création des aliens (ennemis), du vaisseau (joueur), tous 2 mobiles
+        """ 
+        #création des aliens (ennemis)
+        alien = ligne(self.Y, self.RAYON, self.vitesse, self.canevas, self.Fenetre)  
+        
+
         self.alien = alien
         #création d'un vaisseau (le joueur)
         self.vaiss = self.canevas.create_rectangle(self.PosX - 10, self.PosY - 10, self.PosX + 10, self.PosY + 10, width = 2, outline = 'white', fill = 'grey')
         self.canevas.bind("<Key>", lambda event : self.vaisseau.Clavier(self.vaiss, event, self.canevas))
         self.refresh()
         
-        #canevas.bind("<space>", lambda event : projectile.tirer(canevas, self.Fenetre, self.PosX, self.PosY, event))
-        
+
     def refresh(self):
         """ 
-        Fonction qui gère le deplacement des aliens, mais aussi le contact entre le tir et les aliens.
+        Fonction qui gère le déplacement des aliens, la position de départ du tir, mais aussi le contact entre le tir et les aliens 
         """
+    
         self.alien.setminmax()
+        for i in self.tir[0] :
+            i.bougertir()
         for i in range(len(self.alien.getligne())):
-            self.alien.getligne()[i].deplacement(self.al[i],self.canevas)
+            self.alien.getligne()[i].deplacement()
+        for i in self.alien.getligne():
+            i.tir_alien(self.tir[0])
         for i in self.vaisseau.gettir():
             i.bougertir()
-
+        for i in self.tir[0] :
+                if abs(i.getcoord()[0]-self.vaisseau.get_coords()[0])<=10 and abs(i.getcoord()[1]-self.vaisseau.get_coords()[1]) <=10 :
+                    i.delete()
+                    self.tir[0].remove(i)
+                    print('vaisseau touché')
         """ Gestion de la collision, destruction de l'alien et du tir."""
         for i in self.alien.getligne() :
             for v in self.vaisseau.gettir():
-                if i.getcoord() == v.getcoord() :
+                if abs(i.getcoord()[0]-v.getcoord()[0])<=10 and abs(i.getcoord()[1]-v.getcoord()[1]) <=10 :
                     self.vaisseau.delete(v)
-                    self.alien.delete(i)
-        self.Fenetre.after(20,self.refresh)
+                    self.alien.deletealien(i)
+
+        if self.alien.getligne() != [] :
+            self.Fenetre.after(20,self.refresh)
+        else :
+            self.Fenetre.after(20,self.findepartie)
+
+
+    def findepartie(self) :
+        self.canevas.create_rectangle(100,200,600,700 , fill = "#EED"  )
+        self.canevas.create_text(350,450, text = " FIN DE PARTIE")
