@@ -7,8 +7,13 @@ ce qu'il manque : mettre les attribus en privé, récupérer les coordonées du 
 """
 
 class Projectile:  
-
+    """ 
+    Classe qui contrôle le projectile.
+    """
     def __init__(self,canevas,posX,posY):
+        """ 
+        Fonction qui matérialise le projectile sous forme de rectangle.
+        """
         self.vitesse = 5
         self.PosX = posX
         self.PosY = posY
@@ -17,12 +22,21 @@ class Projectile:
 
 
     def bougertir(self) :
+        """ 
+        Fonction qui fait bouger le projectile, unidirectionnellement et sous une certaine vitesse. 
+        """
         self.PosY -= self.vitesse
-        self.canevas.move(self.objet,0,-self.vitesse)
+        self.canevas.move(self.objet,0,-self.vitesse) 
 
     def getcoord(self) :
+        """ 
+        Fonction qui récupère les coordonnées du projectile. 
+        """
         return self.PosX, self.PosY
     
 
     def delete(self) :
-        self.canevas.remove(self.objet)
+        """ 
+        Fonction qui supprime le projectile.
+        """
+        self.canevas.delete(self.objet)

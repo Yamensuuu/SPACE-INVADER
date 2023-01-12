@@ -13,13 +13,15 @@ class ligne():
             self.liste.append(Alien(i,Y,Rayon,vitesse,50,450))
     
     def getligne(self):
+        """ 
+        Fonction qui renvoie la liste d'aliens.
+        """
         return self.liste
     
     def setminmax(self):
         """
-        Renitialiser les valeurs de xmin et xmax 
+        Renitialiser les valeurs de xmin et xmax.
         """
         for i in self.liste :
             i.setxmin(self.liste[0].get())
             i.setxmax(self.liste[-1].get())
-        print(self.liste[-1].get())

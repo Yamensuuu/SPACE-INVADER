@@ -18,7 +18,9 @@ class Vaisseau:
 
     def get_coords(self, canevas):
         
-        #récupère et retourne les (4) coordonnées du vaisseau (joueur)
+        """
+        Récupère et retourne les (4) coordonnées du vaisseau (joueur)
+        """
         
         return canevas.coords(self)
 
@@ -46,7 +48,12 @@ class Vaisseau:
     def gettir(self) :
         return self.tir
     
+
+
     def delete(self,t) :
+        """ 
+        Fonction qui permet de supprimer un tir.
+        """
         if t in self.tir:
             self.tir.remove(t)
             t.delete()

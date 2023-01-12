@@ -12,6 +12,9 @@ from projectile import Projectile
 from Ligne import ligne
 
 class Jeu:
+    """ 
+    Création de la classe jeu, comprenant les points indispensables.
+    """
 
     def __init__(self, Fenetre,canevas):
         self.Fenetre = Fenetre
@@ -33,10 +36,10 @@ class Jeu:
         self.vaisseau = Vaisseau(self.PosX,self.PosY)
 
 
-    #def get(self,x):
-        #return self.__x
-    
     def draw_fenetre(self):
+        """
+        Création de la fenêtre graphique.
+        """
         self.Fenetre.title('Space Invaders')
         self.Fenetre.configure(bg='black')
         self.Title.pack()
@@ -45,7 +48,9 @@ class Jeu:
         self.LabelScore.pack(side = 'left', padx = 30, pady = 70)
         self.BoutonQuitt.pack(side = 'left', padx = 30, pady = 70)
         self.canevas.focus_set()
-        #création d'une barre de menu (test))
+        """
+        Création d'une barre de menu (test)).
+        """
         menubar = Menu(self.Fenetre)
         menufichier = Menu(menubar, tearoff = 0)
         menufichier.add_command(label = 'Quitter', command = self.Fenetre.destroy)
@@ -71,10 +76,10 @@ class Jeu:
         self.refresh()
         
         #canevas.bind("<space>", lambda event : projectile.tirer(canevas, self.Fenetre, self.PosX, self.PosY, event))
-
+        
     def refresh(self):
         """ 
-        Fonction qui gère le deplacement des aliens
+        Fonction qui gère le deplacement des aliens, mais aussi le contact entre le tir et les aliens.
         """
         self.alien.setminmax()
         for i in range(len(self.alien.getligne())):
@@ -82,11 +87,10 @@ class Jeu:
         for i in self.vaisseau.gettir():
             i.bougertir()
 
-                
+        """ Gestion de la collision, destruction de l'alien et du tir."""
         for i in self.alien.getligne() :
             for v in self.vaisseau.gettir():
                 if i.getcoord() == v.getcoord() :
                     self.vaisseau.delete(v)
-                    self.alien.deletealien(i)
+                    self.alien.delete(i)
         self.Fenetre.after(20,self.refresh)
-        

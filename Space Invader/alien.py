@@ -20,7 +20,7 @@ class Alien :
         self.sens = 1
     def deplacement(self, objet, canvas):
         """
-        déplacement de l'oval (l'alien) horizontalement avec une vitesse uniforme
+        Déplacement de l'oval (l'alien) horizontalement avec une vitesse uniforme.
         """
         if self.xmin - self.RAYON + self.DX == self.RAYON : 
             self.Y += 10
@@ -32,25 +32,41 @@ class Alien :
         #print(self.xmin-self.RAYON+self.DX)
         canvas.coords(objet, self.X - self.RAYON, self.Y - self.RAYON, self.X + self.RAYON, self.Y + self.RAYON)
 
-        """ Modifier la valeur de xmin : valeur minimale du bloc d'alien """
+        
 
     def setxmin(self, xmin):
+        """ 
+        Modifier la valeur de xmin : valeur minimale du bloc d'alien. 
+        """
         self.xmin = xmin
         
-        """ Modifier la valeur de xmax : valeur max du bloc d'alien """
+         
+       
 
     def setxmax(self, xmax):
+        """
+        Modifier la valeur de xmax : valeur max du bloc d'alien. 
+        """
         self.xmax = xmax
 
-        """ Retourne la position de l'alien selon x"""
+        
 
     def get(self) :
+        """ 
+        Retourne la position de l'alien selon x.
+        """
         return self.X
     
 
     def getcoord(self) :
+        """
+        Renvoie les coordonnées de l'alien
+        """
         return self.X, self.Y
     
     def delete(self,objet,canevas) :
-        canevas.remove(objet)
+        """ 
+        Supprime l'alien.
+        """
+        canevas.delete(objet)
         
