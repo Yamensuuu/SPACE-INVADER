@@ -110,3 +110,8 @@ class Jeu:
     def findepartie(self) :
         self.canevas.create_rectangle(100,200,600,700 , fill = "#EED"  )
         self.canevas.create_text(350,450, text = " FIN DE PARTIE")
+    
+    #def rejouer(self):
+        #self.Fenetre.destroy()
+        #Jeu(self.Fenetre, self.canevas)
+

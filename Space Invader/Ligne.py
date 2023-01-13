@@ -29,7 +29,7 @@ class ligne():
         for i in self.liste :
             i.setxmin(self.liste[0].get())
             i.setxmax(self.liste[-1].get())
-        print(self.liste[-1].get())
+        # print(self.liste[-1].get())
 
     def deletealien(self,alien) :
         alien.delete()
