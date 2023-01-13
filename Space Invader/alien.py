@@ -45,17 +45,9 @@ class Alien :
         """ 
         Fonction qui va modifier la valeur de xmin : valeur minimale du bloc d'alien 
         """
-        """ 
-        Modifier la valeur de xmin : valeur minimale du bloc d'alien. 
-        """
         self.xmin = xmin
-        
-        """ Modifier la valeur de xmax : valeur max du bloc d'alien """
 
     def setxmax(self, xmax):
-        """
-        Modifier la valeur de xmax : valeur max du bloc d'alien. 
-        """
         """ 
         Fonction qui va modifier la valeur de xmax : valeur max du bloc d'alien 
         sortie : valeur max de x (abscisse de l'alien)
@@ -66,9 +58,6 @@ class Alien :
 
     def get(self) :
         """ 
-        Retourne la position de l'alien selon x.
-        """
-        """ 
         Fonction qui retourne la position de l'alien selon x
         sortie : abscisse de l'alien
         """
@@ -76,9 +65,6 @@ class Alien :
     
 
     def getcoord(self) :
-        """
-        Renvoie les coordonnées de l'alien
-        """
         """
         Fonction qui retourne les coordonnées de l'alien 
         sorties : abscisse (X) et ordonnée (Y) de l'alien 
@@ -90,15 +76,14 @@ class Alien :
         Fonction qui supprime l'alien ( = l'efface du canvas)
         """
         self.canevas.delete(self.objet)
-        """ 
-        Supprime l'alien.
-        """
-       
-
-
         
     def tir_alien(self, L) :
-        if random.randint(0,30) == 0 :
+        """
+        Fonction qui fait tirer alétoirement les aliens 
+        entree : liste L
+        sortie : projectile(s) tire(s)
+        """
+        if random.randint(0,150) == 0 :
             L.append(projectile.Projectile(self.canevas,self.X,self.Y,-1))
 
 
