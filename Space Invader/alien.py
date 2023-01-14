@@ -25,10 +25,8 @@ class Alien :
         self.canevas = canevas
         self.fenetre = fenetre
         self.objet = self.canevas.create_oval(self.X-self.RAYON, self.Y-self.RAYON, self.X+self.RAYON, self.Y+self.RAYON, width = 1, outline = 'red', fill = 'red')
-
-
-
-
+        
+        
     def deplacement(self):
         """
         Fonction qui gère le déplacement de l'oval (l'alien) horizontalement avec une vitesse uniforme

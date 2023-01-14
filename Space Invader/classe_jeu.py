@@ -93,10 +93,12 @@ class Jeu:
                 if abs(i.getcoord()[0]-self.vaisseau.get_coords()[0])<=10 and abs(i.getcoord()[1]-self.vaisseau.get_coords()[1]) <=10 :
                     i.delete()
                     self.tir[0].remove(i)
-                    #print('vaisseau touché')
-                    self.canevas.delete(self.vaiss)
-                    self.Fenetre.after(20,self.findepartie)
-                    return True 
+                    print('vaisseau touché')
+                    self.vaisseau.vies -= 1 
+                    if self.vaisseau.vies == 0 :
+                        self.canevas.delete(self.vaiss)
+                        self.Fenetre.after(20,self.findepartie)
+                        return True 
         """ Gestion de la collision, destruction de l'alien et du tir."""
         for i in self.alien.getligne() :
             for v in self.vaisseau.gettir():

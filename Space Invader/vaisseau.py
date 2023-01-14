@@ -15,6 +15,7 @@ class Vaisseau:
         self.PosY = PosY
         self.tir = []
         self.tir_alien = []
+        self.vies = 3
 
 
     def get_coords(self):
