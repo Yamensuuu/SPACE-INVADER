@@ -125,4 +125,3 @@ class Jeu:
         Jeu(self.Fenetre, self.canevas)
         self.init_jeu()
         #print ("rejouer")
-
