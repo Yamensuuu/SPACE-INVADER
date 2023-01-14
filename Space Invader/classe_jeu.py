@@ -20,7 +20,7 @@ class Jeu:
         self.Fenetre = Fenetre
         self.Title = Label(self.Fenetre, text = " Space Invaders",relief ='raised', fg = "blue", font = ("Courier", 30))
         self.Frame1 = Frame(self.Fenetre, relief = 'groove', bg = 'black')
-        self.BoutonPlay = Button(self.Frame1, text='Rejouer', fg = 'blue')
+        self.BoutonPlay = Button(self.Frame1, text='Rejouer', command = self.rejouer, fg = 'blue')
         self.Texte = StringVar()
         self.LabelScore = Label(self.Frame1, textvariable = self.Texte, fg = 'red')
         self.BoutonQuitt = Button(self.Frame1, text = " Quitter", fg = "red",relief = 'groove', command = self.Fenetre.destroy)
@@ -66,7 +66,7 @@ class Jeu:
         """ 
         #création des aliens (ennemis)
         alien = ligne(self.Y, self.RAYON, self.vitesse, self.canevas, self.Fenetre)  
-        
+        print (self.vitesse)
 
         self.alien = alien
         #création d'un vaisseau (le joueur)
@@ -79,7 +79,6 @@ class Jeu:
         """ 
         Fonction qui gère le déplacement des aliens, la position de départ du tir, mais aussi le contact entre le tir et les aliens 
         """
-    
         self.alien.setminmax()
         for i in self.tir[0] :
             i.bougertir()
@@ -111,7 +110,9 @@ class Jeu:
         self.canevas.create_rectangle(100,200,600,700 , fill = "#EED"  )
         self.canevas.create_text(350,450, text = " FIN DE PARTIE")
     
-    #def rejouer(self):
-        #self.Fenetre.destroy()
-        #Jeu(self.Fenetre, self.canevas)
+    def rejouer(self):
+        self.canevas.delete("all")
+        Jeu(self.Fenetre, self.canevas)
+        self.init_jeu()
+        print ("rejouer")
 
