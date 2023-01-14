@@ -21,9 +21,6 @@ class Projectile:
         self.type = type
 
     def bougertir(self) :
-        """
-        Fonction qui fait bouger le tirer à une certaine vitesse 
-        """
         """ 
         Fonction qui fait bouger le projectile, unidirectionnellement et sous une certaine vitesse. 
         """
@@ -44,7 +41,3 @@ class Projectile:
         Fonction qui supprime le projectile
         """
         self.canevas.delete(self.objet)
-    
-    def tir_alien(self):
-        self.Y += self.vitesse
-        self.canevas.move(self.canevas.create_rectangle(self.X - 1, self.Y - 10, self.X + 1, self.Y + 10,fill= 'red',outline = 'white'),0,+self.vitesse)

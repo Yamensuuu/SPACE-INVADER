@@ -1,15 +1,12 @@
 """
 Lucie Fabian - Yamen Ben Guirat 
 12/12/22
-Classe Alien
+Classe Alien (ennemis)
 ce qu'il manque : mettre les attribus en privé
 """
 
 import random, projectile
 
-
-
-#création d'un oval (alien)
 class Alien :
 
     #INITIALISATION
@@ -83,6 +80,3 @@ class Alien :
         """
         if random.randint(0,150) == 0 :
             L.append(projectile.Projectile(self.canevas,self.X,self.Y,-1))
-
-
-        
