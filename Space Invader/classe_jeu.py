@@ -3,6 +3,7 @@ Lucie Fabian - Yamen Ben Guirat
 12/12/22
 Classe Jeu 
 ce qu'il manque : mettre les attribus en privé
+                  régler la fonction rejouer() (problème: la vitesse des aliens augmente à chaque fois)
 """
 
 from tkinter import Label, Button, Menu, Frame, BOTTOM, StringVar, NW  
@@ -20,7 +21,7 @@ class Jeu:
         self.Fenetre = Fenetre
         self.Title = Label(self.Fenetre, text = " Space Invaders",relief ='raised', fg = "blue", font = ("Courier", 30))
         self.Frame1 = Frame(self.Fenetre, relief = 'groove', bg = 'black')
-        self.BoutonPlay = Button(self.Frame1, text='Rejouer', command = self.rejouer, fg = 'blue')
+        self.BoutonPlay = Button(self.Frame1, text='Rejouer', fg = 'blue') # command = self.rejouer)
         self.Texte = StringVar()
         self.LabelScore = Label(self.Frame1, textvariable = self.Texte, fg = 'red')
         self.BoutonQuitt = Button(self.Frame1, text = " Quitter", fg = "red",relief = 'groove', command = self.Fenetre.destroy)
@@ -92,7 +93,10 @@ class Jeu:
                 if abs(i.getcoord()[0]-self.vaisseau.get_coords()[0])<=10 and abs(i.getcoord()[1]-self.vaisseau.get_coords()[1]) <=10 :
                     i.delete()
                     self.tir[0].remove(i)
-                    print('vaisseau touché')
+                    #print('vaisseau touché')
+                    self.canevas.delete(self.vaiss)
+                    self.Fenetre.after(20,self.findepartie)
+                    return True 
         """ Gestion de la collision, destruction de l'alien et du tir."""
         for i in self.alien.getligne() :
             for v in self.vaisseau.gettir():
@@ -107,12 +111,16 @@ class Jeu:
 
 
     def findepartie(self) :
+        self.canevas.delete("all")
         self.canevas.create_rectangle(100,200,600,700 , fill = "#EED"  )
         self.canevas.create_text(350,450, text = " FIN DE PARTIE")
     
-    def rejouer(self):
-        self.canevas.delete("all")
-        Jeu(self.Fenetre, self.canevas)
-        self.init_jeu()
-        print ("rejouer")
+    #def rejouer(self):
+        """
+        Fonction qui permet de rejouer une partie 
+        """
+        #self.canevas.delete("all")
+        #Jeu(self.Fenetre, self.canevas)
+        #self.init_jeu()
+        #print ("rejouer")
 
