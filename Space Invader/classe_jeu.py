@@ -21,7 +21,7 @@ class Jeu:
         self.Fenetre = Fenetre
         self.Title = Label(self.Fenetre, text = " Space Invaders",relief ='raised', fg = "blue", font = ("Courier", 30))
         self.Frame1 = Frame(self.Fenetre, relief = 'groove', bg = 'black')
-        self.BoutonPlay = Button(self.Frame1, text='Rejouer', fg = 'blue') # command = self.rejouer)
+        self.BoutonPlay = Button(self.Frame1, text='Rejouer', fg = 'blue', command = self.rejouer)
         self.Texte = StringVar()
         self.LabelScore = Label(self.Frame1, textvariable = self.Texte, fg = 'red')
         self.BoutonQuitt = Button(self.Frame1, text = " Quitter", fg = "red",relief = 'groove', command = self.Fenetre.destroy)
@@ -117,12 +117,12 @@ class Jeu:
         self.canevas.create_rectangle(100,200,600,700 , fill = "#EED"  )
         self.canevas.create_text(350,450, text = " FIN DE PARTIE")
     
-    #def rejouer(self):
+    def rejouer(self):
         """
         Fonction qui permet de rejouer une partie 
         """
-        #self.canevas.delete("all")
-        #Jeu(self.Fenetre, self.canevas)
-        #self.init_jeu()
+        self.canevas.delete("all")
+        Jeu(self.Fenetre, self.canevas)
+        self.init_jeu()
         #print ("rejouer")
 
