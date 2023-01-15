@@ -2,6 +2,10 @@
 Lucie Fabian - Yamen Ben Guirat 
 12/12/22
 Programme principal du jeu Space Invader 
+
+Manque un fond ( space.png ), remplacer les aliens par les images jeu et jeu2; le vaisseau par son image.
+
+Le jeu reste néanmoins fonctionnel, le joueur a 3 vies
 """
 
 from tkinter import Tk, Canvas, NW  

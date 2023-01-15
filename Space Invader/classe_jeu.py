@@ -2,11 +2,10 @@
 Lucie Fabian - Yamen Ben Guirat 
 12/12/22
 Classe Jeu 
-ce qu'il manque : mettre les attribus en privé
-                  régler la fonction rejouer() (problème: la vitesse des aliens augmente à chaque fois)
+
 """
 
-from tkinter import Label, Button, Menu, Frame, BOTTOM, StringVar, NW  
+from tkinter import Label, Button, Menu, Frame, BOTTOM, StringVar, NW
 from alien import Alien
 from vaisseau import Vaisseau
 from projectile import Projectile
@@ -50,6 +49,8 @@ class Jeu:
         self.LabelScore.pack(side = 'left', padx = 30, pady = 70)
         self.BoutonQuitt.pack(side = 'left', padx = 30, pady = 70)
         self.canevas.focus_set()
+
+        
         """
         Création d'une barre de menu (test)).
         """
@@ -113,13 +114,14 @@ class Jeu:
 
 
     def findepartie(self) :
+        """ Fonction qui affiche le rectangle fin de partie."""
         self.canevas.delete("all")
-        self.canevas.create_rectangle(100,200,600,700 , fill = "#EED"  )
+        self.canevas.create_rectangle(0,2200,1000,200 , fill = "#EED", width =0, outline='red'  )
         self.canevas.create_text(350,450, text = " FIN DE PARTIE")
     
     def rejouer(self):
         """
-        Fonction qui permet de rejouer une partie 
+        Fonction qui permet de rejouer une partie. 
         """
         self.canevas.delete("all")
         Jeu(self.Fenetre, self.canevas)
